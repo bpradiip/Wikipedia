@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto";
+  background: #4eb3f7;
+}
+
+.hide {
+  display: none;
+}
+
+#results {
+  width: 60%;
+  display: block;
+  margin: 2em auto 0 auto;
+  padding: 0;
+  transform: translateY(0);
+  opacity: 0;
+  transition: 0.5s;
+  z-index: -40 !important;
+}
+#results.loaded {
+  opacity: 1;
+  transform: translateY(-11em);
+}
+#results a {
+  text-decoration: none;
+  color: #000;
+}
+#results a .entry {
+  list-style: none;
+  padding: 1.6em 1em;
+  border-radius: 0.4em;
+  margin-bottom: 0.5em;
+  background: #fff;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+#results a .entry .title {
+  font-size: 2em;
+  font-weight: 700;
+}
+#results a .entry .desc {
+  padding: 0.4em 0 0.1em 0;
+  width: 70%;
+}
+
+#input-container {
+  z-index: 50;
+  width: 36%;
+  margin: 10em auto 0;
+  position: relative;
+  text-align: center;
+  transform: translateY(0);
+  transition: 0.5s;
+}
+#input-container.searching {
+  transform: translateY(-8em);
+}
+#input-container h1 {
+  position: absolute;
+  color: #fff;
+  top: -2.7em;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 3em;
+}
+#input-container h1.searching {
+  opacity: 0;
+}
+#input-container #search-container {
+  z-index: 50;
+  display: table;
+  width: 100%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  transition: 0.5s;
+  margin: 0 auto;
+}
+#input-container #search-container .cell {
+  display: table-cell;
+}
+#input-container #search-container .cell:last-child {
+  width: 1px;
+}
+#input-container #search-container #autocomplete {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50 !important;
+  color: #000;
+  height: 1px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  border-radius: 5px;
+  opacity: 1;
+  transition: 0.5s;
+}
+#input-container #search-container #autocomplete.searching {
+  opacity: 0;
+}
+#input-container #search-container #autocomplete a {
+  text-decoration: none;
+  color: #000;
+  z-index: 500 !important;
+}
+#input-container #search-container #autocomplete a li {
+  position: relative;
+  z-index: 500 !important;
+  list-style: none;
+  line-height: 1.5em;
+  padding: 0.2em 0.6em;
+  display: block;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+#input-container #search-container #autocomplete a li:last-child {
+  border-bottom: 0;
+}
+#input-container #search-container #autocomplete a li:hover {
+  background: #e0e0e0;
+}
+#input-container #search-container input[type=search],
+#input-container #search-container .button {
+  width: 100%;
+  height: 35px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+#input-container #search-container input[type=search] {
+  margin: 0;
+  padding: 0 10px;
+  background-color: #f8f8f8;
+  border: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+#input-container #search-container .button {
+  line-height: 35px;
+  margin: 0;
+  padding: 0 20px;
+  color: #fff;
+  background-color: #ff1717;
+  font-weight: bold;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+#input-container #input-row {
+  text-align: center;
+  margin-top: 1em;
+  opacity: 1;
+  transition: 0.5s;
+}
+#input-container #input-row.searching {
+  opacity: 0;
+}
+#input-container #input-row #random {
+  display: inline-block;
+  cursor: pointer;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 10px;
+  background-color: #ff1717;
+  border-radius: 5px;
+  white-space: nowrap;
+  color: #fff;
+  margin-right: 1em;
+}
+#input-container #input-row #lang {
+  display: inline-block;
+  width: 8em;
+  height: 36px;
+  border-radius: 5px;
+}
+#input-container #input-row #lang #lang-select {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 980px) {
+  #results {
+    width: 80%;
+  }
+  #results a .entry .title {
+    font-size: 1.6em;
+  }
+  #results a .entry .desc {
+    width: 100%;
+  }
+
+  #input-container {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 480px) {
+  #results {
+    width: 95%;
+  }
+  #results a .entry .title {
+    font-size: 1.6em;
+  }
+  #results a .entry .desc {
+    width: 100%;
+  }
+
+  #input-container {
+    width: 85%;
+  }
+
+  h1 {
+    font-size: 2.6em;
+  }
+}
